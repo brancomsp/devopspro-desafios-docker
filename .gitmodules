@@ -1,0 +1,3 @@
+[submodule "mongo-express-devops"]
+	path = mongo-express-devops
+	url = git@github.com:brancomsp/mongo-express.git
