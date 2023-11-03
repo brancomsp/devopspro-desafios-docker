@@ -1,0 +1,32 @@
+version: '3.8'
+
+volumes:
+  volume_devopspro:
+
+networks:
+  devopspro_net:
+    driver: bridge
+
+services:
+  postgresql:
+    container_name: postgresql
+    image: postgres:latest
+    networks:
+      - devopspro_net
+    volumes:
+      - volume_devopspro:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=pguser
+      - POSTGRES_PASSWORD=pgpwd
+      - POSTGRES_DB=dbteste
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:latest
+    ports:
+      - 8081:80
+    networks:
+      - devopspro_net
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=meuemail@example.com
+      - PGADMIN_DEFAULT_PASSWORD=minhasenha
