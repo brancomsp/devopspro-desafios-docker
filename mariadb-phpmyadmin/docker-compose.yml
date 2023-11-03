@@ -1,0 +1,30 @@
+version: '3.8'
+
+volumes:
+  volume_devopspro:
+
+networks:
+  devopspro_net:
+    driver: bridge
+
+services:
+  mariadb:
+    container_name: mariadb
+    image: mariadb:latest
+    networks:
+      - devopspro_net
+    volumes:
+      - volume_devopspro:/var/lib/mysql
+    environment:
+      - MARIADB_PASSWORD=mariadbpwd
+      - MARIADB_ROOT_PASSWORD=mariadbpwd
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin
+    ports:
+      - 8080:80
+    networks:
+      - devopspro_net
+    environment:
+      - PMA_HOST=mariadb
