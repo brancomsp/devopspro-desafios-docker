@@ -1,3 +1,6 @@
 [submodule "mongo-express-devops"]
 	path = mongo-express-devops
 	url = git@github.com:brancomsp/mongo-express.git
+[submodule "conversao-distancia"]
+	path = conversao-distancia
+	url = git@github.com:brancomsp/conversao-distancia.git
