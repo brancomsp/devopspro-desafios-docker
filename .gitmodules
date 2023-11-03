@@ -4,3 +4,6 @@
 [submodule "conversao-distancia"]
 	path = conversao-distancia
 	url = git@github.com:brancomsp/conversao-distancia.git
+[submodule "rotten-potatoes"]
+	path = rotten-potatoes
+	url = git@github.com:brancomsp/rotten-potatoes.git
