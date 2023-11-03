@@ -1,0 +1,20 @@
+version: '3.8'
+
+volumes:
+  volume_devopspro:
+
+networks:
+  devopspro_net:
+    driver: bridge
+
+services:
+  conversao-temperatura:
+    container_name: conversao-temperatura
+    image: brancomoreira/conversao-temperatura:v1
+    build:
+      dockerfile: ./Dockerfile
+      context: ./src
+    ports: 
+     - 8080:8080
+    networks:
+      - devopspro_net
