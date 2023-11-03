@@ -1,0 +1,35 @@
+version: '3.8'
+
+volumes:
+  volume_devopspro:
+
+networks:
+  devopspro_net:
+    driver: bridge
+
+services:
+  wordpress-db:
+    container_name: wordpress-db
+    image: mysql:5.7
+    networks:
+      - devopspro_net
+    volumes:
+      - volume_devopspro:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=wordpresspwd
+      - MYSQL_DATABASE=wordpress    
+
+  wordpress:
+    container_name:  wordpress
+    image: wordpress:latest
+    ports:
+      - 8080:80
+    networks:
+      - devopspro_net
+    environment:
+      - WORDPRESS_DB_HOST=wordpress-db
+      - WORDPRESS_DB_USER=root
+      - WORDPRESS_DB_PASSWORD=wordpresspwd
+      - WORDPRESS_DB_NAME=wordpress
+    volumes:
+      - volume_devopspro:/var/lib/mysql
